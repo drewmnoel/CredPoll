@@ -6,7 +6,8 @@ from datetime import datetime
 from credpoll.util import get_cred_files, get_hashes
 
 __version__ = "0.1"
-
+CACHE_FILE = f"{os.path.expanduser('~')}/.rotator"
+CACHE = []
 
 def list_accounts(logs_dir: str) -> list:
     hashes = get_hashes(get_cred_files(logs_dir))
@@ -109,8 +110,6 @@ def main():
     )
 
     args = parser.parse_args()
-
-    global CACHE
     CACHE = check_and_load_cache()
 
     # Process directory and get absolute path
@@ -155,7 +154,4 @@ def main():
 
 
 if __name__ == "__main__":
-    CACHE_FILE = f"{os.path.expanduser('~')}/.rotator"
-    global CACHE
-    CACHE = []
     main()
