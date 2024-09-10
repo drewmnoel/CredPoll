@@ -2,7 +2,7 @@ import argparse
 import os
 import sys
 from datetime import datetime
-from util import get_cred_files, get_hashes
+from credpoll.util import get_cred_files, get_hashes
 
 __version__ = "0.1"
 
@@ -87,7 +87,7 @@ def reset_cache():
 
 def main():
     # Parse Arguments
-    parser = argparse.ArgumentParser(
+    parser = argparse.ArgumentParser("credpoll",
         description="Credential Polling for Responder",
     )
     parser.add_argument('--responder-logs-dir',
